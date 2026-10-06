@@ -13,11 +13,29 @@ cd C:/rokey/py_work
 git clone https://github.com/jhc1000/ROKEY1151_Bootcamp_Study.git
 ```
 
-### 2. 추가/변경 후 git에 올리기
+### 2. 추가/변경 전 로컬저장소를 원격저장소와 같게 최신화하기
+```bash
+# ROKEY1151_Bootcamp_Study 폴더로 이동
+# 1. 작업 중인 폴더로 이동
+cd ./ROKEY1151_Bootcamp_Study
+
+# 2. 원격 저장소(origin)의 master 브랜치 최신 내용 가져와서 합치기
+git pull origin master
+
+# 1. 원격 저장소의 최신 변경 "정보만" 가져오기 (내 파일은 바뀌지 않음)
+git fetch origin
+
+# 2. 변경된 상태 확인하기 (선택사항)
+git status
+
+# 3. 확인 후, 내 로컬의 master 브랜치에 가져온 내용 병합하기
+git merge origin/master
+```
+
+### 3. 추가/변경 후 git에 올리기
 ```bash
 # ROKEY1151_Bootcamp_Study 폴더로 이동
 cd ./ROKEY1151_Bootcamp_Study
-git init
 
 # 모든 변경점 스테이징
 git add .
@@ -27,7 +45,7 @@ git commit -m "add changes into master"
 git push origin master
 ```
 
-### 3. 수업자료 연습문제 / 과제 코드 올리기
+### 4. 수업자료 연습문제 / 과제 코드 올리기
 `code_review/python` 폴더에 주차별 폴더가 존재합니다.  
 `week04` 폴더에 예시가 있으니 참고하세요.  
 
