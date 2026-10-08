@@ -1,4 +1,7 @@
-seokun_codingtest_01.py
+# seokun_codingtest_01.py
+
+
+
 
 
 
@@ -16,4 +19,4 @@ def solution(price):
 
 
 
-https://school.programmers.co.kr/learn/courses/30/lessons/120818
+# https://school.programmers.co.kr/learn/courses/30/lessons/120818
