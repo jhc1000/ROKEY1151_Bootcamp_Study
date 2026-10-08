@@ -17,6 +17,25 @@ price는 10원 단위로(1의 자리가 0) 주어집니다.
 # 그외 : 1배의 금액 지불
 # 지불 금액 반환시 소수점 이하를 버린 정수를 return
 
+print('----------')
+from math import floor 
+
+def solution(price):
+    answer = 0
+    discount_ratio = 0.0
+    if price >= 500000:
+        discount_ratio = 0.2
+    elif price >= 300000:
+        discount_ratio = 0.1
+    elif price >= 100000:
+        discount_ratio = 0.05
+    answer = floor(price*(1-discount_ratio))
+    return answer
+
+print(solution(150000))
+print(solution(580000))
+print('-----------')
+
 import math
 from math import floor 
 # round() 반올림
@@ -39,23 +58,10 @@ print(round(314.1591, -2))
 print(math.ceil(99.1))
 print(math.floor(99.6))
 
+
 print('----------')
 
-def solution(price):
-    answer = 0
-    discount_ratio = 0.0
-    if price >= 500000:
-        discount_ratio = 0.2
-    elif price >= 300000:
-        discount_ratio = 0.1
-    elif price >= 100000:
-        discount_ratio = 0.05
-    answer = floor(price*(1-discount_ratio))
-    return answer
 
-print(solution(150000))
-print(solution(580000))
-print('-----------')
 
 # 사이트 솔루션
 def solution(price):
