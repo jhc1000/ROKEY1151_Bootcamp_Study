@@ -78,7 +78,10 @@ print('-----------')
 discount_rates = {500000: 0.8, 300000: 0.9, 100000: 0.95, 0: 1}
 print(discount_rates.items())
 print("__iter__" in dir(discount_rates.items()))  # True # iterable
+print("__next__" in dir(discount_rates.items()))  # False # iterable
 
+
+#  for __ in ___ = iterable (range(5), "fjlsfjs", [1,2,5,7,5], discount_rates.items())
 print('-----------')
 # int는 소수점 버림 판정
 print(int(float(123.999)))  # 123

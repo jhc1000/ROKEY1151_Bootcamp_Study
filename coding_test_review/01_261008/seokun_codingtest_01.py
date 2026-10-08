@@ -17,6 +17,7 @@ def solution(price):
     
     return int(answer)
 
-
+print(solution(150000))
+print(solution(580000))
 
 # https://school.programmers.co.kr/learn/courses/30/lessons/120818

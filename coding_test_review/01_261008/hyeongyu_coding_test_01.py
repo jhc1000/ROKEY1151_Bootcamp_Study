@@ -1,6 +1,6 @@
 def solution(price):
     if price >= 500000:
-        return price * 80 // 100
+        return price * 80 // 100 
     elif price >= 300000:
         return price * 90 // 100
     elif price >= 100000:
@@ -9,3 +9,4 @@ def solution(price):
         return price
 print(solution(150000))
 print(solution(580000))
+
