@@ -88,8 +88,7 @@ def maze_dfs(maze, start):
         if (r,c) not in visited:
             next_step = [(-1,0),(1,0),(0,-1),(0,1)]
             for dr, dc in next_step:
-                nr = r+dr
-                nc = c+dc
+                nr, nc = r+dr, c+dc
                 if boundary(maze, (nr,nc)) and maze[nr][nc] == 0:
                     stack.append((nr,nc))
             visited.append((r,c))
@@ -116,14 +115,13 @@ def maze_bfs(maze, start):
         if (r,c) not in visited:
             next_step = [(-1,0),(1,0),(0,-1),(0,1)]
             for dr, dc in next_step:
-                nr = r+dr
-                nc = c+dc
+                nr, nc = r+dr, c+dc
                 if boundary(maze, (nr,nc)) and maze[nr][nc] == 0:
                     queue.append((nr,nc))
             visited.append((r,c))
     return visited
 
 start_point = (0,0)
-print(maze_dfs(maze, start_point))
+print(maze_bfs(maze, start_point))
 
 print('----------')

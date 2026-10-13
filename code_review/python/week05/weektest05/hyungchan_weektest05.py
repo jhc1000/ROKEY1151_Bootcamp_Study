@@ -13,6 +13,8 @@ python three"""
 
 def find_python_sentence(data):
     pattern = r"^python.*"
+    # pattern = r"^python\s\w+"
+    # pattern = r"^python \w*"
     sentence_list = re.findall(pattern, data, re.M)
     return sentence_list
 print(find_python_sentence(data))
