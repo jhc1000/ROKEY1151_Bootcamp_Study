@@ -82,8 +82,8 @@ def solution1(maps):
 
 # 최단거리 계산 (다음 방문 노드 map값은 이전 노드 map값에서 +1)
 
-def boundary(maps, point):
-    if (0<= point[0] <len(maps)) and (0<= point[1] <len(maps[0])):
+def boundary(row_end, col_end, point):
+    if (0<= point[0] <row_end) and (0<= point[1] <col_end):
         return True
     return False
 
@@ -105,7 +105,7 @@ def solution2(maps):
             for (dr,dc) in direction:
                 nr = r+dr
                 nc = c+dc
-                if not boundary(maps, (nr,nc)) or (maps[nr][nc] == 0):
+                if not boundary(end[0]+1, end[1]+1, (nr,nc)) or (maps[nr][nc] == 0):
                     continue
                 else:
                     # 최단거리 계산 (다음 방문 노드 map값은 이전 노드 map값에서 +1)
@@ -141,6 +141,38 @@ def solution3(maps):
 
     return -1
 
+# 효율성 통과 풀이
+def boundary(row_end, col_end, point):
+    if (0<= point[0] <row_end) and (0<= point[1] <col_end):
+        return True
+    return False
+
+def solution4(maps):
+    start = (0,0)
+    end = (len(maps)-1, len(maps[0])-1)
+    direction = [(1,0), (0,1), (-1,0), (0,-1)]
+    queue = list()
+    queue.append(start)
+    while queue:
+        node = queue.pop(0)
+        r = node[0]
+        c = node[1]
+        for (dr,dc) in direction:
+            nr = r+dr
+            nc = c+dc
+            if boundary(end[0]+1, end[1]+1, (nr,nc)):
+                if (maps[nr][nc] == 1) or (maps[nr][nc] > (maps[r][c]+1)):
+                    # 최단거리 계산 (다음 방문 노드 map값은 이전 노드 map값에서 +1)
+                    maps[nr][nc] = maps[r][c] + 1
+                    queue.append((nr,nc)) 
+                    if (nr,nc) == end:
+                        return maps[nr][nc]
+    return -1
+
+def print_maps(maps):
+    for row in maps:
+        print(row)
+
 if __name__=="__main__":
     maps1 = [[1,0,1,1,1],[1,0,1,0,1],[1,0,1,1,1],[1,1,1,0,1],[0,0,0,0,1]]
     answer1 = 11
@@ -148,13 +180,28 @@ if __name__=="__main__":
     maps2 = [[1,0,1,1,1],[1,0,1,0,1],[1,0,1,1,1],[1,1,1,0,0],[0,0,0,0,1]]
     answer2 = -1
     
+    maps3 = [[1,0,1,1,1,0],
+             [1,0,1,0,1,1],
+             [1,0,1,1,1,0],
+             [1,1,1,0,1,0],
+             [0,0,0,0,1,1]]
+    answer3 = 12
+    
     # result1 = solution1(maps1)
     # result2 = solution1(maps2)
     
     # result1 = solution2(maps1)
     # result2 = solution2(maps2)
         
-    result1 = solution3(maps1)
-    result2 = solution3(maps2)
+    # result1 = solution3(maps1)
+    # result2 = solution3(maps2)
+    
+    result1 = solution4(maps1)
+    result2 = solution4(maps2)
+    
     print(f"테스트1: {result1==answer1}")
     print(f"테스트2: {result2==answer2}")
+    
+    result3 = solution4(maps3)
+    print(f"테스트3: {result3==answer3}")
+    print_maps(maps3)
