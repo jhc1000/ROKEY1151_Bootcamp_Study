@@ -161,7 +161,7 @@ def solution4(maps):
             nr = r+dr
             nc = c+dc
             if boundary(end[0]+1, end[1]+1, (nr,nc)):
-                if (maps[nr][nc] == 1) or (maps[nr][nc] > (maps[r][c]+1)):
+                if (maps[nr][nc] == 1) or (maps[nr][nc] > (maps[r][c]+1)):  # not in visited     
                     # 최단거리 계산 (다음 방문 노드 map값은 이전 노드 map값에서 +1)
                     maps[nr][nc] = maps[r][c] + 1
                     queue.append((nr,nc)) 
