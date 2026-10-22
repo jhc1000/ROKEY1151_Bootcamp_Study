@@ -43,18 +43,18 @@ def solution1(maps):
     # visited 리스트에 방문한 위치 저장
     visited = list()
     # queue 에 시작노드 저장
-    queue.append([start])
+    queue.append([start])       
     # stack 이 빌때까지 while:
-    while queue:
+    while queue:    # queue = [[(0,2), (2,2), (2,2), (2,4)]]
         # node를 queue 에서 dequeue
-        nodes = queue.pop(0)
+        nodes = queue.pop(0)        # [(아래), (오른쪽)] 2번째 스텝
         # 1스탭 지날때마다 answer +1 
         # (다음 노드들을 step 리스트에 저장후 step 리스트를 queue에 저장) 
         # (step 이 빈 리스트면 queue에 저장 x)
-        answer += 1
+        answer += 1         # 스텝 +1
         step = list()
-        for node in nodes:
-            r = node[0]
+        for node in nodes: # [(1,2), (2,3)]
+            r = node[0]    # (2,3)
             c = node[1]
             # 만약 node 가 visited에 없다면
             if node not in visited:
@@ -71,7 +71,7 @@ def solution1(maps):
                     if not boundary(maps, (nr,nc)) or (maps[nr][nc] == 0):
                         continue
                     else:
-                        step.append((nr,nc)) 
+                        step.append((nr,nc))    #    step = [(0,2), (2,2), (2,2), (2,4)]
         if step:
             queue.append(step)
     return -1
